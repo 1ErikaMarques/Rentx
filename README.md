@@ -5,7 +5,7 @@ Aplicativo de aluguel de carros
 # Tecnologias
 * React Native
   * TypeScript
-* Css
+* CSS
   * Styled Components
   
 # Dependências  

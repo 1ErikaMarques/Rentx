@@ -1,4 +1,7 @@
 import React from 'react';
+import { Feather } from '@expo/vector-icons';
+import { RFValue } from 'react-native-responsive-fontsize';
+import { useTheme } from 'styled-components';
 import { useNavigation } from '@react-navigation/native';
 
 import { BackButton } from '../../components/BackButton';
@@ -13,7 +16,6 @@ import gasolineSvg from '../../assets/gasoline.svg';
 import exchangeSvg from '../../assets/exchange.svg';
 import peopleSvg from '../../assets/people.svg';
 
-
 import {
   Container,
   Header,
@@ -26,16 +28,28 @@ import {
   Rent,
   Period,
   Price,
-  About,
   Accessories,
+  RentalPeriod,
+  CalendarIcon,
+  DateInfo,
+  DateTitle,
+  DateValue,
+
+  RentalPrice,
+  RentalPriceLabel,
+  RentalPriceDetails,
+  RentalPriceQuota,
+  RentalPriceTotal,
   Footer,
 } from './styles';
 
-export function CarDetails() {
-  const navigation = useNavigation();
 
+export function SchedulingDetails() {
+  const theme = useTheme();
+
+  const navigation = useNavigation();
   function handleConfirmRental() {
-    navigation.navigate({ key: 'Scheduling' });
+    navigation.navigate({ key: 'SchedulingComplete' });
   }
   return (
     <Container>
@@ -69,15 +83,42 @@ export function CarDetails() {
           <Accessory name="Auto" icon={exchangeSvg} />
           <Accessory name="4 pessoas" icon={peopleSvg} />
         </Accessories>
-        <About>
-          O PEUGEOT i-Cockpit® 2.0 disponibiliza uma vasta gama de tecnologias inovadoras
-          que foram concebidas para aprimorar o seu conforto e segurança.
-          Graças ao eficiente motor Turbo THP 165, você vai se sentir confortável ao volante
-          deste ágil veículo e sentir um incomparável prazer de condução.
-        </About>
+
+        <RentalPeriod>
+          <CalendarIcon>
+            <Feather
+              name="calendar"
+              size={RFValue(24)}
+              color={theme.colors.shape}
+            />
+          </CalendarIcon>
+
+          <DateInfo>
+            <DateTitle>DE</DateTitle>
+            <DateValue>18/06/2021</DateValue>
+          </DateInfo>
+
+          <Feather
+            name="chevron-right"
+            size={RFValue(10)}
+            color={theme.colors.text}
+          />
+
+          <DateInfo>
+            <DateTitle>ate</DateTitle>
+            <DateValue>18/06/2021</DateValue>
+          </DateInfo>
+        </RentalPeriod>
+        <RentalPrice>
+          <RentalPriceLabel>Total</RentalPriceLabel>
+          <RentalPriceDetails>
+            <RentalPriceQuota>R$ 580 x3 diárias</RentalPriceQuota>
+            <RentalPriceTotal>R$ 2.900</RentalPriceTotal>
+          </RentalPriceDetails>
+        </RentalPrice>
       </Content>
       <Footer>
-        <Button title="Escolher periodo do aluguel" onPress={handleConfirmRental} />
+        <Button title="Alugar Agora" color={theme.colors.success} onPress={handleConfirmRental} />
       </Footer>
     </Container>
   );

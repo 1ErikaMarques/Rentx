@@ -5,23 +5,23 @@ import { useTheme } from 'styled-components';
 import { Calendar as CustomCalendar, LocaleConfig } from 'react-native-calendars';
 
 LocaleConfig.locales['pt-br'] = {
-  monthNames: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro' ],
+  monthNames: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
   monthNamesShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
-  dayNames: ['Domingo','Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sabado'],
-  dayNamesShort: ['DOM','SEG', 'TER','QUA','QUI','SEX','SAB'],
+  dayNames: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sabado'],
+  dayNamesShort: ['DOM', 'SEG', 'TER', 'QUA', 'QUI', 'SEX', 'SAB'],
   today: 'Hoje'
 }
-LocaleConfig.defaultLocale= 'pt-br';
+LocaleConfig.defaultLocale = 'pt-br';
 
-export function Calendar(){
+export function Calendar() {
   const theme = useTheme();
 
   return (
-    <CustomCalendar 
-      renderArrow={( direction ) => 
-        <Feather 
-          size={24} 
-          color={theme.colors.text} 
+    <CustomCalendar
+      renderArrow={(direction) =>
+        <Feather
+          size={24}
+          color={theme.colors.text}
           name={direction == "left" ? "chevron-left" : "chevron-right"}
         />
       }
@@ -44,7 +44,7 @@ export function Calendar(){
         arrowStyle: {
           marginHorizontal: -15
         }
-      }}      
+      }}
       firstDay={1}
       minDate={new Date()}//data atual
     />

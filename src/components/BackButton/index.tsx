@@ -7,16 +7,16 @@ import {
   Container
 } from './styles';
 
-interface Props extends  BorderlessButtonProps{
+interface Props extends BorderlessButtonProps {
   color?: string
 }
 
-export function BackButton({color, ...rest}: Props){
+export function BackButton({ color, ...rest }: Props) {
   const theme = useTheme();
 
   return (
     <Container {...rest}>
-      <MaterialIcons 
+      <MaterialIcons
         name="chevron-left"
         size={24}
         color={color ? color : theme.colors.text}

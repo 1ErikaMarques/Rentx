@@ -52,7 +52,7 @@ export const DataValueContainer = styled.View<DateValueContainerProps>`
     border-bottom-color: ${theme.colors.text};
     padding-bottom: 5px;
   `}
-`; 
+`;
 
 export const DataValue = styled.Text`
   color: ${({ theme }) => theme.colors.shape};

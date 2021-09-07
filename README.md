@@ -1,6 +1,6 @@
 # Rentx
 # Description
-car rental app.
+Car rental app.
 
 # Technologies
 * React Native

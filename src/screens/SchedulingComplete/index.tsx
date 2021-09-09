@@ -19,7 +19,7 @@ export function SchedulingComplete() {
 
   const navigation = useNavigation();
   function handleConfirm() {
-    navigation.navigate({ key: 'Home' });
+    navigation.navigate('Home');
   }
 
   return (

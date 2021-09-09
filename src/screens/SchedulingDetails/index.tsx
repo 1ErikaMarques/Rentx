@@ -49,7 +49,7 @@ export function SchedulingDetails() {
 
   const navigation = useNavigation();
   function handleConfirmRental() {
-    navigation.navigate({ key: 'SchedulingComplete' });
+    navigation.navigate('SchedulingComplete');
   }
   return (
     <Container>

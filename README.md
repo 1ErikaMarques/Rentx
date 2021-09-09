@@ -1,14 +1,14 @@
 # Rentx
-# Decrição
-Aplicativo de aluguel de carros
+# Description
+Car rental app.
 
-# Tecnologias
+# Technologies
 * React Native
   * TypeScript
 * CSS
   * Styled Components
   
-# Dependências  
+# Dependencies  
 * react-native-calendars
 * react-native-gesture-handler
 * react-native-iphone-x-helper

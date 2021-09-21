@@ -1,5 +1,6 @@
 import styled from 'styled-components/native';
-/* import { Dimensions } from 'react-native'; */
+import { Dimensions } from 'react-native';
+
 
 interface ImageIndexProps {
   active: boolean;
@@ -23,9 +24,8 @@ export const ImageIndex = styled.View<ImageIndexProps>`
   border-radius: 3px;
 `;
 
-export const CarImageWrapper = styled.View`
-  
-  width: 100%;
+export const CarImageWrapper = styled.View`  
+  width: ${Dimensions.get('window').width}px;  /*pegando a largura da tela*/
   height: 132px;
   justify-content: center;
   align-items: center;
@@ -34,6 +34,4 @@ export const CarImageWrapper = styled.View`
 export const CarImage = styled.Image`
   width: 280px;
   height: 132px;
-
 `;
-/* width: ${Dimensions.get('window').width}px;  pegando a largura da tela*/

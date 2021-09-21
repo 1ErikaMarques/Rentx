@@ -9,18 +9,18 @@ import { Routes } from './src/routes';
 
 export default function App() {
   const [fontsLoaded] = useFonts({
-    Inter_400Regular, 
+    Inter_400Regular,
     Inter_500Medium,
-    Archivo_400Regular, 
+    Archivo_400Regular,
     Archivo_500Medium,
     Archivo_600SemiBold
   });
 
-  if(!fontsLoaded){
-    return <AppLoading />//tela de splash
+  if (!fontsLoaded) {
+    return <AppLoading />//segurando a tela de splash
   }
 
   return <ThemeProvider theme={theme}>
-            <Routes  />
-         </ThemeProvider>
-} 
+    <Routes />
+  </ThemeProvider>
+}

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigation } from '@react-navigation/native'
-import { StatusBar, StyleSheet, BackHandler } from 'react-native';
+import { StatusBar, StyleSheet } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { RFValue } from 'react-native-responsive-fontsize';
 import { PanGestureHandler, RectButton } from 'react-native-gesture-handler';
@@ -86,12 +86,6 @@ export function Home() {
       }
     }
     FetchCars();
-  }, []);
-
-  useEffect(() => {
-    BackHandler.addEventListener('hardwareBackPress', () => { //previnindo comportamento // voltar a splash//android//ios foi feito nas rotas
-      return true; //n vai fazer nd
-    })
   }, []);
 
   return (

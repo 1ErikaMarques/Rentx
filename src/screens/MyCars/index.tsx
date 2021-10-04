@@ -51,11 +51,12 @@ export function MyCars() {
       try {
         const response = await api.get('/schedules_byuser?user_id=1');//id do usuario que ira carregar
 
-
         setCars(response.data);
-      } catch (error) {
+      }
+      catch (error) {
         console.log(error);
-      } finally {
+      }
+      finally {
         setLoading(false);
       }
     }

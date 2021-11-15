@@ -134,7 +134,7 @@ export function SchedulingDetails() {
 
           <Rent>
             <Period>{car.period}</Period>
-            <Price>R${car.price}</Price>
+            <Price>R$ {car.price}</Price>
           </Rent>
         </Details>
 

@@ -75,17 +75,26 @@ export function Home() {
   }
 
   useEffect(() => {
-    async function FetchCars() {
+    let isMounted = true;
+
+    async function fetchCars() {
       try {
         const response = await api.get('/cars');
-        setCars(response.data);
+        if (isMounted) {//o estado so sera atualizado se o componente/interface estiver montado
+          setCars(response.data);
+        }
       } catch (error) {
         console.log(error);
       } finally {//independente se deu certo ou errado
-        setLoading(false)
+        if (isMounted) {
+          setLoading(false)
+        }
       }
     }
-    FetchCars();
+    fetchCars();
+    return () => { //funcao de limpeza
+      isMounted = false
+    }
   }, []);
 
   return (

@@ -12,7 +12,7 @@ const { Navigator, Screen } = createStackNavigator();
 
 export function AppStackRoutes() {
   return (
-    <Navigator screenOptions={({ headerShown: false })} initialRouteName="Home">{/* escondendo o header */}
+    <Navigator screenOptions={({ headerShown: false })} initialRouteName="Home">
       <Screen name="Home" component={Home} />
       <Screen name="CarDetails" component={CarDetails} />
       <Screen name="Scheduling" component={Scheduling} />

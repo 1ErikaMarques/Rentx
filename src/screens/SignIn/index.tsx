@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import {
   StatusBar,
@@ -13,6 +13,8 @@ import { useAuth } from '../../hooks/auth';
 import { Button } from '../../components/Button';
 import { Input } from '../../components/Input';
 import { PasswordInput } from '../../components/PasswordInput';
+
+import { database } from '../../database';
 
 import theme from '../../styles/theme';
 import {
@@ -45,7 +47,7 @@ export function SignIn() {
       if (error instanceof Yup.ValidationError) { //erro causado pelo proprio yup,algum campo q o user n preencheu corretamente
         return Alert.alert('erro user', error.message);
       } else {
-        Alert.alert('erro na autentição', 'Ocorreu um erro ao fazer login'
+        Alert.alert('erro na autenticação', 'Ocorreu um erro ao fazer login'
         )
       }
     }
@@ -54,6 +56,16 @@ export function SignIn() {
   function handleNewAccount() {
     navigation.navigate('SignUpFirstStep');
   }
+
+  useEffect(() => {
+    async function loadData() {
+      const userCollection = database.get('users');
+      const users = await userCollection.query().fetch();
+      console.log(users)
+    }
+
+    loadData();
+  }, [])
 
   return (
     <KeyboardAvoidingView behavior="position" enabled>

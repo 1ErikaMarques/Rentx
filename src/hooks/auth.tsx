@@ -21,6 +21,8 @@ interface SignInCredentials {
 interface AuthContextData { //oq sera compartilhado atraves do contexto
   user: User;
   signIn: (credentials: SignInCredentials) => Promise<void>;
+  signOut: () => Promise<void>;
+  updatedUser: (user: User) => Promise<void>;
 }
 
 interface AuthProviderProps {
@@ -62,6 +64,36 @@ function AuthProvider({ children }: AuthProviderProps) {
     }
   }
 
+  async function signOut() {
+    try {
+      const userCollection = database.get<ModelUser>('users');
+      await database.write(async () => {
+        const userSelected = await userCollection.find(data.id);//identificando o usuario
+        await userSelected.destroyPermanently();//removendo
+      })
+      setData({} as User); //atualizando o estado, sendo vazio do tipo User
+    } catch (error: any) {
+      throw new Error(error)
+    }
+  }
+
+  async function updatedUser(user: User) {
+    try {
+      const userCollection = database.get<ModelUser>('users');
+      await database.write(async () => {
+        const userSelected = await userCollection.find(data.id);
+        await userSelected.update((userData) => { //usuario que sera atualizado, os dados ficarao em userData
+          userData.name = user.name; //dados que serao atualizados
+          userData.driver_license = user.driver_license,
+            userData.avatar = user.avatar
+        })
+      })
+      setData(user);//atualizando o estado
+    } catch (error: any) {
+      throw new Error(error)
+    }
+  }
+
   useEffect(() => {
     async function loadUserData() {
       //buscando se o usuario esta logado
@@ -78,7 +110,7 @@ function AuthProvider({ children }: AuthProviderProps) {
   });
 
   return (
-    <AuthContext.Provider value={{ user: data, signIn }}>
+    <AuthContext.Provider value={{ user: data, signIn, signOut, updatedUser }}>
       {children}
     </AuthContext.Provider>
   )

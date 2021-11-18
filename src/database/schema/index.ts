@@ -1,12 +1,14 @@
 import { appSchema } from '@nozbe/watermelondb';
 
 import { userSchema } from './userSchema';
+import { carSchema } from './carSchema';
 
 const schemas = appSchema({ //centralizar todas as tabelas
-  version: 1,
+  version: 2,
   tables: [
-    userSchema
+    userSchema,
+    carSchema
   ]
-})
+});
 
 export { schemas }

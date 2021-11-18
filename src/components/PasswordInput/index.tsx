@@ -45,11 +45,13 @@ export function PasswordInput({ iconName, value, ...rest }: Props) {
           color={(isFocused || isFilled) ? theme.colors.main : theme.colors.text_detail}
         />
       </IconContainer>
+
       <InputText
         secureTextEntry={isPasswordVisible}
         onFocus={handleInputFocus}
         onBlur={handleInputBlur}
         isFocused={isFocused}
+        autoCorrect={false}
         {...rest}
       />
 
